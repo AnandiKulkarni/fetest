@@ -1,0 +1,66 @@
+{
+  "unpublishedPage": {
+    "name": "Page 1",
+    "slug": "page-1",
+    "layouts": [
+      {
+        "viewMode": false,
+        "dsl": {
+          "widgetName": "MainContainer",
+          "backgroundColor": "none",
+          "rightColumn": 1224,
+          "snapColumns": 64,
+          "detachFromLayout": true,
+          "widgetId": "0",
+          "topRow": 0,
+          "bottomRow": 1400,
+          "containerStyle": "none",
+          "snapRows": 66,
+          "parentRowSpace": 1,
+          "type": "CANVAS_WIDGET",
+          "canExtend": true,
+          "version": 83,
+          "minHeight": 670,
+          "parentColumnSpace": 1,
+          "dynamicBindingPathList": [],
+          "leftColumn": 0
+        },
+        "layoutOnLoadActions": [
+          [
+            {
+              "id": "Page 1_Api1",
+              "name": "Api1",
+              "confirmBeforeExecute": false,
+              "pluginType": "API",
+              "jsonPathKeys": [],
+              "timeoutInMillisecond": 10000
+            },
+            {
+              "id": "Page 1_TC2.myFun2",
+              "name": "TC2.myFun2",
+              "collectionId": "Page 1_TC2",
+              "clientSideExecution": true,
+              "confirmBeforeExecute": false,
+              "pluginType": "JS",
+              "jsonPathKeys": [
+                "async () => {\n  failingQuery.run().then(() => showAlert(\"Query run was successful\")).catch(() => {\n    randomUserGenerator.run().then(res => {\n      let values = [storeValue('pic', res.results[0].picture.large), storeValue('dob', res.results[0].dob.date), storeValue('phone', res.results[0].phone), storeValue('cell', res.results[0].cell), storeValue('email', res.results[0].email), storeValue('password', res.results[0].login.password), storeValue('lat', res.results[0].location.coordinates.latitude), storeValue('long', res.results[0].location.coordinates.longitude), storeValue('title', res.results[0].name.title), storeValue('first', res.results[0].name.first), storeValue('last', res.results[0].name.last), storeValue('gender', res.results[0].gender)];\n      return Promise.all(values).then(() => {\n        showAlert(\"completed storing all values and now displaying all values on appropriate widgets\");\n      }).catch(err => {\n        console.log(\"Could not store value in store  \", err.toString());\n        showAlert('Could not store values in store ', err.toString());\n      });\n    });\n  });\n}"
+              ],
+              "timeoutInMillisecond": 10000
+            }
+          ]
+        ],
+        "layoutOnLoadActionErrors": [],
+        "validOnPageLoadActions": true,
+        "id": "Page 1",
+        "deleted": false,
+        "policies": [],
+        "userPermissions": []
+      }
+    ],
+    "userPermissions": [],
+    "policies": [],
+    "isHidden": false
+  },
+  "deleted": false,
+  "gitSyncId": "64ccc0bbf277b4643797c0a6_64ccc0bbf277b4643797c0ae"
+}
